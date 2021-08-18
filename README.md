@@ -9,6 +9,9 @@
         - Indie Flower
         - Permanent Marker
         - Rock Salt
+  
+- ### React Router
+    - **$ npm install react-router-dom**
 
 ## Things I Added
-- I added a lot of custom styling and mobile view / responsive design
+- I added a lot of custom styling, images and mobile view / responsive design
