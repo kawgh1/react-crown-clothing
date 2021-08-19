@@ -1,16 +1,17 @@
 .menu-item {
-	min-width: 30%;
-	height: 45vh;
+	min-width: 35%;
+	height: 55vh;
 	flex: 1 1 auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border: 1px solid black;
-	margin: 0 7.5px 15px;
+	margin: 0 2.5px 5px;
 	overflow: hidden;
 	font-family: "Rock Salt";
 	position: relative;
 	border-radius: 3px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
 
 	&:hover {
 		cursor: pointer;
@@ -43,7 +44,9 @@
 		height: 100%;
 		background-size: cover;
 		background-position: 25% 25%;
-		filter: brightness(120%);
+		filter: brightness(125%);
+		box-shadow: rgba(50, 50, 93, 0.5) 0px 30px 60px -12px inset,
+			rgba(0, 0, 0, 0.8) 0px 18px 36px -18px inset;
 	}
 
 	.content {

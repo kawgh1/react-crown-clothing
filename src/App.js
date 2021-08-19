@@ -4,8 +4,10 @@ import HomePage from './pages/homepage/homepage.component';
 import { Switch, Route } from 'react-router-dom'
 
 
+
 // PAGES
 import ShopPage from './pages/shop/shop.component'
+import SigninSignupPage from './pages/signin-signup/signin-signup.component';
 
 // HEADER
 import Header from './components/header/header.component'
@@ -19,6 +21,7 @@ function App() {
       <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/shop' component={ShopPage} />
+          <Route exact path='/signin' component={SigninSignupPage} />
           
       </Switch>
       

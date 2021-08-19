@@ -52,6 +52,13 @@ class Directory extends React.Component {
     render() {
         return (
             <div className='directory-menu'>
+
+<hr
+        style={{
+            color: "red",
+            width: "90%"
+        }}
+    />
                 {
                     this.state.sections.map(section => (
 
@@ -61,8 +68,17 @@ class Directory extends React.Component {
                                     size={section.size}
                                     linkUrl={section.linkUrl}
                                     />
+
+                                    
                     )
                 )}
+
+                <hr
+        style={{
+            color: "red",
+            width: "90%"
+        }}
+    />
             </div>
         )
     }
