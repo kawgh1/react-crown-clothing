@@ -2,3 +2,13 @@ body {
 	font-family: "Arsenal";
 	padding: 20px 5px;
 }
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	color: blue;
+	font-size: 16px;
+}

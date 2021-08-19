@@ -7,11 +7,15 @@ import { Switch, Route } from 'react-router-dom'
 // PAGES
 import ShopPage from './pages/shop/shop.component'
 
+// HEADER
+import Header from './components/header/header.component'
+
 function App() {
   return (
     <div className='container'>
       {/* <HomePage /> */}
 
+      <Header />
       <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/shop' component={ShopPage} />
