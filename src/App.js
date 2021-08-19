@@ -9,7 +9,7 @@ import ShopPage from './pages/shop/shop.component'
 
 function App() {
   return (
-    <div >
+    <div className='container'>
       {/* <HomePage /> */}
 
       <Switch>

@@ -5,7 +5,7 @@
 ## Tools Used
 - ### Sass CSS
     - **$ npm install node-sass --save**
-    - Google Fonts
+    - **Google Fonts**
         - Indie Flower
         - Permanent Marker
         - Rock Salt
