@@ -10,6 +10,7 @@
         - Permanent Marker
         - Rock Salt
         - Arsenal
+        - Jura (Crown logo)
   
 - ### React Router
     - **$ npm install react-router-dom**
