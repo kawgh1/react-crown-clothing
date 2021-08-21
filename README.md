@@ -13,17 +13,56 @@
   
 - ### React Router
     - **$ npm install react-router-dom**
-    - 
+  
 - ### Google Firebase
     - https://firebase.google.com/
     - **$ npm install firebase@6.0.2**
-    - #### Javascript Objects We Get Back From Firestore
+    - ### Javascript Objects We Get Back From Firestore Database
         - A **query** is a request we make to Firestore to give us something from the **Database**
             - **Firestore returns us two types of objects: references and snapshots**
                 - Of these objects, they can be either **Document** or **Collection** versions
                 - Firestore will **always** return us these objects, even if nothing exists at/from that query
-        - **QueryReference**
+        - **QueryReference** - Object that represents the **"current"** place in the database that we are querying.
+            - We get them by calling either:
+                - **firestore.doc('/users/:userId');**
+                - **firestore.collections('/users);**
+            - **The queryReference object does not have the actual data of the collection or document. It instead has properties that tell us details about it, or the method to get the Snapshot object which gives us the data we are looking for.**
         - **QuerySnapshot**
+
+
+    - ### DocumentReference vs CollectionReference
+        - We use documentRef objects to perform **CRUD operations** (create, retrieve, update, delete). The documentRef methods are **.set()**, **.get()**, **.update()** and **.delete()**
+        - We can also add documents to collections using the collectionRef object using the **.add()** method.
+            - collectionRef.add({ value: property })
+        - We get the snapshotObject from the referenceObject using the **.get()** method
+            - documentRef.get() or collectionRef.get()
+        - **documentRef returns a documentSnapshot object**
+        - **collectionRef returns a querySnapshot object**
+
+    - ### DocumentSnapshot
+        - We get a documentSnapshot object from our documentReference object
+        - The documentSnapshot object allows us to check if a document exists at this query using the **.exists** property which returns a boolean
+        - We can also get the actual properties on the object by calling the **.data()** method, which returns us a JSON object of the document
+
+        File: App.js
+
+            componentDidMount() {
+               
+                this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+               
+                    // if userAuth exist in firestore database
+                    if (userAuth) {
+                        const userRef = await createUserProfileDocument(userAuth);
+
+                        userRef.onSnapshot(snapShot => {
+
+                                console.log(snapShot.data());
+                            
+                        });
+                    }
+
+                });
+            }
 
 ## Things I Added
 - I added a lot of custom styling, images and mobile view / responsive design

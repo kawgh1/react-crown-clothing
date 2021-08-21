@@ -18,10 +18,41 @@ const config = {
 export const createUserProfileDocument = async (userAuth, additionalData) => {
 
     // if there is no Google user on Google Signin -> if userAuth == null
-    if(!userAuth)    return; //exit
+   
+    if(!userAuth) return;  // exit
     
+    // console.log(firestore.doc('users/12'));
+    // const userRef = firestore.doc('users/12');
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+
+    // snapShot's exist property tells us if there's any data there or not
+    const snapShot = await userRef.get();
+
+    // console.log(snapShot);
+
+    // if returned snapShot.exists property == false, ie, user does not exist in firestore
+    if(!snapShot.exists) {
+        const { displayName, email } = userAuth;
+        const createdAt = new Date();
+
+        // then create that new user from the data in our userAuth object in the database
+
+        try {
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                ...additionalData
+            })
+        } catch (error) {
+
+            console.log('error creating user', error.message);
+        }
+    }
+
+    return userRef;
     
-} 
+};
 
 
 

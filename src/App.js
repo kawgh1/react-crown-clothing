@@ -13,7 +13,7 @@ import SigninSignupPage from './pages/signin-signup/signin-signup.component';
 import Header from './components/header/header.component'
 
 // FIREBASE
-import { auth } from './firebase/firebase.utils'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 // when a user signs in, we want to store that in **STATE** so that our app can know that across all pages and components
 // because we want to access our current 'user-object' throughout our app
 
@@ -30,11 +30,22 @@ class App extends React.Component {
   unsubscribeFromAuth = null
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user});
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      // this.setState({ currentUser: user});
+      // createUserProfileDocument(user);
+      // if userAuth exist in database
+      if (userAuth) {
+          const userRef = await createUserProfileDocument(userAuth);
+
+          userRef.onSnapshot(snapShot => {
+
+            
+          })
+      }
 
       // console.log(user);
-    })
+    });
   }
 
   componentWillUnmount() {
