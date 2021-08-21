@@ -12,22 +12,56 @@ import SigninSignupPage from './pages/signin-signup/signin-signup.component';
 // HEADER
 import Header from './components/header/header.component'
 
-function App() {
-  return (
-    <div className='container'>
-      {/* <HomePage /> */}
+// FIREBASE
+import { auth } from './firebase/firebase.utils'
+// when a user signs in, we want to store that in **STATE** so that our app can know that across all pages and components
+// because we want to access our current 'user-object' throughout our app
 
-      <Header />
-      <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/shop' component={ShopPage} />
-          <Route exact path='/signin' component={SigninSignupPage} />
-          
-      </Switch>
-      
+class App extends React.Component {
 
-    </div>
-  );
+  constructor() {
+    super();
+
+    this.state = {
+      currentUser: null
+    }
+  }
+
+  unsubscribeFromAuth = null
+
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
+      this.setState({ currentUser: user});
+
+      // console.log(user);
+    })
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+
+  render() {
+
+    return (
+      <div className='container'>
+        {/* <HomePage /> */}
+  
+        
+  
+        <Header currentUser={this.state.currentUser} />
+        <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route exact path='/shop' component={ShopPage} />
+            <Route exact path='/signin' component={SigninSignupPage} />
+            
+        </Switch>
+        
+  
+      </div>
+    );
+  }
+  
 }
 
 export default App;
