@@ -13,6 +13,9 @@
   
 - ### React Router
     - **$ npm install react-router-dom**
+- ### Google Firebase
+    - https://firebase.google.com/
+    - **$ npm install firebase@6.0.2**
 
 ## Things I Added
 - I added a lot of custom styling, images and mobile view / responsive design

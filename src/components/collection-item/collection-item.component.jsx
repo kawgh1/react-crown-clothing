@@ -10,7 +10,7 @@ const CollectionItem = (props) =>  (
 
         <hr
             style={{
-                color: "gray",
+                color: "white",
                 width: "95%"
             }}
         />
@@ -20,7 +20,7 @@ const CollectionItem = (props) =>  (
 
                     <hr
                     style={{
-                        color: "LightGray",
+                        color: "white",
                         marginLeft: "0px",
                         width: "95%"
                     }}

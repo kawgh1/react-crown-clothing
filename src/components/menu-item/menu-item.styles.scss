@@ -1,11 +1,11 @@
 .menu-item {
 	min-width: 35%;
-	height: 55vh;
+	height: 25rem;
 	flex: 1 1 auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid black;
+	border: 1px solid white;
 	margin: 0 2.5px 5px;
 	overflow: hidden;
 	font-family: "Rock Salt";
@@ -23,7 +23,7 @@
 		}
 
 		& .content {
-			opacity: 0.8;
+			// opacity: 0.8;
 		}
 	}
 
@@ -45,20 +45,21 @@
 		background-size: cover;
 		background-position: 25% 25%;
 		filter: brightness(125%);
-		box-shadow: rgba(50, 50, 93, 0.5) 0px 30px 60px -12px inset,
-			rgba(0, 0, 0, 0.8) 0px 18px 36px -18px inset;
 	}
 
 	.content {
-		height: 6vh;
+		height: 7vh;
 		padding: 0 2px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		border: 1px solid rgb(1, 35, 73);
-		background-color: rgb(235, 246, 250);
-		opacity: 0.8;
+		border: 1px solid rgb(245, 245, 245);
+		background-color: rgba(0, 0, 0, 0.01);
+		// box-shadow:
+		box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 28px 8px;
+
+		// opacity: 0.95;
 		position: absolute;
 		//
 		// width: 12%;
@@ -71,9 +72,10 @@
 		.title {
 			font-weight: 700;
 			margin: 0 6px 0;
-			font-size: 2vh;
-			color: #034d5a;
-			opacity: 1;
+			font-size: 1rem;
+			color: #ffffff;
+			// opacity: 1;
+			filter: brightness(250%);
 		}
 
 		.subtitle {

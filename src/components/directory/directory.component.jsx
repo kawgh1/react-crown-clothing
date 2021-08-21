@@ -55,7 +55,7 @@ class Directory extends React.Component {
 
 <hr
         style={{
-            color: "red",
+            color: "white",
             width: "90%"
         }}
     />
@@ -75,7 +75,7 @@ class Directory extends React.Component {
 
                 <hr
         style={{
-            color: "red",
+            color: "white",
             width: "90%"
         }}
     />

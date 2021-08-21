@@ -3,13 +3,28 @@
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	max-width: 1200px;
+	max-width: 1300px;
 	margin: auto;
 
 	.logo-container {
 		height: 100%;
 		width: 70px;
 		padding: 25px;
+	}
+
+	.logo {
+		box-shadow: rgb(255, 255, 255) 0px 0px 16px 18px;
+		background-color: white;
+		border-radius: 5px;
+
+		&:active,
+		:focus {
+			cursor: pointer;
+
+			transform: scale(1.15);
+			transition: transform 0.1s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+			// opacity: 0.6;
+		}
 	}
 
 	.options {
@@ -22,6 +37,7 @@
 
 		.option {
 			padding: 10px 15px;
+			margin-top: 30px;
 		}
 	}
 }
