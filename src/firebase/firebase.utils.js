@@ -13,6 +13,18 @@ const config = {
 
 };
 
+
+// FireStore Database
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+
+    // if there is no Google user on Google Signin -> if userAuth == null
+    if(!userAuth)    return; //exit
+    
+    
+} 
+
+
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
