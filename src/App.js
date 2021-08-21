@@ -24,7 +24,7 @@ class App extends React.Component {
 
     this.state = {
       currentUser: null
-    }
+    };
   }
 
   unsubscribeFromAuth = null
@@ -34,16 +34,37 @@ class App extends React.Component {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       // this.setState({ currentUser: user});
       // createUserProfileDocument(user);
-      // if userAuth exist in database
+      // if userAuth exist in firestore database
       if (userAuth) {
           const userRef = await createUserProfileDocument(userAuth);
 
+          // get snapshot of user
           userRef.onSnapshot(snapShot => {
 
-            
-          })
+            // console.log(snapShot.data());
+              // set this App's current user using userRef's properties from firestore
+              this.setState({
+                
+                  currentUser: {
+                      id: snapShot.id,
+                      ...snapShot.data()
+                  }
+                  // since setState() is an asynchronous call, 
+                  // have to pass console.log as a second function as a parameter in setState
+                  // running console.log immediately after an async call 
+                  // will return null because the async call is not finished yet
+              }
+              //, () => {
+                // console.log(this.state);
+              // }
+              );
+
+
+          });
       }
 
+      // if user signs out, it will reset userAuth to null, thus our App's current user will be bull
+      this.setState({ currentUser: userAuth });
       // console.log(user);
     });
   }
