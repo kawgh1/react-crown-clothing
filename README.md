@@ -23,6 +23,9 @@
 ## Things I Added
 - I added a lot of custom styling, images and mobile view / responsive design
 
+## Build Errors
+- Encountered an error with the node_module grpc
+
 ## Things I Learned
 
 - ### Javascript Objects We Get Back From Firestore Database
