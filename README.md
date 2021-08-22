@@ -42,6 +42,8 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 
 ## Things I Learned
 
+![Redux Diagram](https://github.com/kawgh1/react-crown-clothing/blob/main/redux-diagram.png)
+
 ## REDUX
 - React is best at handling the View - not so good at handling complex State
 - Redux is for managing and scaling large applications that have a lot going on in State
