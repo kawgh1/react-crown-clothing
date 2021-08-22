@@ -1,4 +1,5 @@
 # React-based E-Commerce site with additional features
+This `main` branch contains Redux and the more advanced features. The `react_only` branch contains only react and basic firebase functionality.
 
 - Based on course by Zero-to-Mastery
 
@@ -18,6 +19,8 @@
 - ### Google Firebase
     - https://firebase.google.com/
     - **$ npm install firebase@6.0.2**
+
+- ### Redux
     
 
 ## Things I Added
@@ -39,6 +42,30 @@
 
 ## Things I Learned
 
+## REDUX
+- React is best at handling the View - not so good at handling complex State
+- Redux is for managing and scaling large applications that have a lot going on in State
+- Useful for sharing data between Components
+- ### 3 Principles of Redux
+    - 1. Single source of truth
+        - There is only one State in Redux
+    - 2. State is read only
+    - 3. Changes made using only pure functions
+        - A pure function is one that always receives an input and always returns a predictable output
+
+- ### Redux Flow
+    - **Action --> Root Reducer --> Store --> DOM changes**
+    - Action - a user event, clicking a button
+    - Reducer - **ALL user actions go through the Reducer first**
+        - this is how we keep things organized at scale
+        - user takes user action, inputs in a pure function at the reducer and updates State
+    - Store - represents what our app should look like, State updates
+    - DOM Changes - React detects changes to State and renders appropriately
+- ## FLUX Pattern
+    - Redux uses an architectural pattern called Flux
+    - **Action --> Dispatcher --> Store --> View**
+
+
 
 ### Javascript Objects We Get Back From Firestore Database
 - A **query** is a request we make to Firestore to give us something from the **Database**
@@ -59,7 +86,7 @@
 
 
 ### DocumentReference vs CollectionReference
-    - We use documentRef objects to perform **CRUD operations** (create, retrieve, update, delete). The documentRef methods are **.set()**, **.get()**, **.update()** and **.delete()**
+- We use documentRef objects to perform **CRUD operations** (create, retrieve, update, delete). The documentRef methods are **.set()**, **.get()**, **.update()** and **.delete()**
     - We can also add documents to collections using the collectionRef object using the **.add()** method.
         - collectionRef.add({ value: property })
     - We get the snapshotObject from the referenceObject using the **.get()** method
@@ -68,33 +95,33 @@
     - **collectionRef returns a querySnapshot object**
 
 ### DocumentSnapshot
-    - We get a documentSnapshot object from our documentReference object
-    - The documentSnapshot object allows us to check if a document exists at this query using the **.exists** property which returns a boolean
-    - We can also get the actual properties on the object by calling the **.data()** method, which returns us a JSON object of the document
+- We get a documentSnapshot object from our documentReference object
+- The documentSnapshot object allows us to check if a document exists at this query using the **.exists** property which returns a boolean
+- We can also get the actual properties on the object by calling the **.data()** method, which returns us a JSON object of the document
 
-        File: App.js
+    File: App.js
 
-            componentDidMount() {
-            
-                this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            
-                    // if userAuth exist in firestore database
-                    if (userAuth) {
-                        const userRef = await createUserProfileDocument(userAuth);
+        componentDidMount() {
+        
+            this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+        
+                // if userAuth exist in firestore database
+                if (userAuth) {
+                    const userRef = await createUserProfileDocument(userAuth);
 
-                        userRef.onSnapshot(snapShot => {
+                    userRef.onSnapshot(snapShot => {
 
-                                // console.log(snapShot.data());
+                            // console.log(snapShot.data());
 
-                                this.setState({
-                                    currentUser: {
-                                        id: snapShot.id,
-                                        ...snapShot.data()
-                                    }
-                                })
-                            
-                        });
-                    }
+                            this.setState({
+                                currentUser: {
+                                    id: snapShot.id,
+                                    ...snapShot.data()
+                                }
+                            })
+                        
+                    });
+                }
 
-                });
-            }
+            });
+        }
