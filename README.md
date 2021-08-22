@@ -59,7 +59,7 @@
 
 
 ### DocumentReference vs CollectionReference
-    - We use documentRef objects to perform **CRUD operations** (create, retrieve, update, delete). The documentRef methods are **.set()**, **.get()**, **.update()** and **.delete()**
+- We use documentRef objects to perform **CRUD operations** (create, retrieve, update, delete). The documentRef methods are **.set()**, **.get()**, **.update()** and **.delete()**
     - We can also add documents to collections using the collectionRef object using the **.add()** method.
         - collectionRef.add({ value: property })
     - We get the snapshotObject from the referenceObject using the **.get()** method
@@ -68,33 +68,33 @@
     - **collectionRef returns a querySnapshot object**
 
 ### DocumentSnapshot
-    - We get a documentSnapshot object from our documentReference object
-    - The documentSnapshot object allows us to check if a document exists at this query using the **.exists** property which returns a boolean
-    - We can also get the actual properties on the object by calling the **.data()** method, which returns us a JSON object of the document
+- We get a documentSnapshot object from our documentReference object
+- The documentSnapshot object allows us to check if a document exists at this query using the **.exists** property which returns a boolean
+- We can also get the actual properties on the object by calling the **.data()** method, which returns us a JSON object of the document
 
-        File: App.js
+    File: App.js
 
-            componentDidMount() {
-            
-                this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            
-                    // if userAuth exist in firestore database
-                    if (userAuth) {
-                        const userRef = await createUserProfileDocument(userAuth);
+        componentDidMount() {
+        
+            this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+        
+                // if userAuth exist in firestore database
+                if (userAuth) {
+                    const userRef = await createUserProfileDocument(userAuth);
 
-                        userRef.onSnapshot(snapShot => {
+                    userRef.onSnapshot(snapShot => {
 
-                                // console.log(snapShot.data());
+                            // console.log(snapShot.data());
 
-                                this.setState({
-                                    currentUser: {
-                                        id: snapShot.id,
-                                        ...snapShot.data()
-                                    }
-                                })
-                            
-                        });
-                    }
+                            this.setState({
+                                currentUser: {
+                                    id: snapShot.id,
+                                    ...snapShot.data()
+                                }
+                            })
+                        
+                    });
+                }
 
-                });
-            }
+            });
+        }
