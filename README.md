@@ -48,7 +48,15 @@
     - 1. Single source of truth
         - There is only one State in Redux
     - 2. State is read only
-    - 3. Changes using pure functions
+    - 3. Changes made using only pure functions
+        - A pure function is one that always receives an input and always returns a predictable output
+
+- ### Redux Flow
+    - **Action --> Root Reducer --> Store --> DOM changes**
+    - Action - a user event, clicking a button
+    - Reducer - takes user action, inputs in a pure function and updates State
+    - Store - State updates
+    - DOM Changes - React detects changes to State and renders appropriately
 
 ### Javascript Objects We Get Back From Firestore Database
 - A **query** is a request we make to Firestore to give us something from the **Database**
