@@ -38,7 +38,7 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 
 - Building on Heroku
 - https://github.com/mars/create-react-app-buildpack
-    - **heroku create crown-clothing --buildpack https://github.com/mars/create-react-app-buildpack.git**
+    - **$ heroku create crown-clothing --buildpack https://github.com/mars/create-react-app-buildpack.git**
 
 ## Things I Learned
 
