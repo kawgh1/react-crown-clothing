@@ -30,8 +30,7 @@
         File: package.json
         
             "engines": {
-                "node": ">=10.0.0",
-                "npm": ">=6.0.0"
+                "node": "12.x"
             },
 
 - Building on Heroku
@@ -54,9 +53,14 @@
 - ### Redux Flow
     - **Action --> Root Reducer --> Store --> DOM changes**
     - Action - a user event, clicking a button
-    - Reducer - takes user action, inputs in a pure function and updates State
-    - Store - State updates
+    - Reducer - **ALL user actions go through the Reducer first**
+        - this is how we keep things organized at scale
+        - user takes user action, inputs in a pure function at the reducer and updates State
+    - Store - represents what our app should look like, State updates
     - DOM Changes - React detects changes to State and renders appropriately
+- ## FLUX Pattern
+    - Redux uses an architectural pattern called Flux
+    - **Action --> Dispatcher --> Store --> View**
 
 ### Javascript Objects We Get Back From Firestore Database
 - A **query** is a request we make to Firestore to give us something from the **Database**
