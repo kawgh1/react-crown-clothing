@@ -25,6 +25,9 @@
 
 ## Build Errors
 - Encountered an error with the node_module grpc
+- Building on Heroku
+- https://github.com/mars/create-react-app-buildpack
+    - **heroku create crown-clothing --buildpack https://github.com/mars/create-react-app-buildpack.git**
 
 ## Things I Learned
 
