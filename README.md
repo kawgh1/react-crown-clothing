@@ -39,28 +39,6 @@
 
 ## Things I Learned
 
-## REDUX
-- React is best at handling the View - not so good at handling complex State
-- Redux is for managing and scaling large applications that have a lot going on in State
-- Useful for sharing data between Components
-- ### 3 Principles of Redux
-    - 1. Single source of truth
-        - There is only one State in Redux
-    - 2. State is read only
-    - 3. Changes made using only pure functions
-        - A pure function is one that always receives an input and always returns a predictable output
-
-- ### Redux Flow
-    - **Action --> Root Reducer --> Store --> DOM changes**
-    - Action - a user event, clicking a button
-    - Reducer - **ALL user actions go through the Reducer first**
-        - this is how we keep things organized at scale
-        - user takes user action, inputs in a pure function at the reducer and updates State
-    - Store - represents what our app should look like, State updates
-    - DOM Changes - React detects changes to State and renders appropriately
-- ## FLUX Pattern
-    - Redux uses an architectural pattern called Flux
-    - **Action --> Dispatcher --> Store --> View**
 
 ### Javascript Objects We Get Back From Firestore Database
 - A **query** is a request we make to Firestore to give us something from the **Database**
