@@ -50,10 +50,13 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 - Useful for sharing data between Components
 - ### 3 Principles of Redux
     - 1. Single source of truth
-        - There is only one State in Redux
+        - There is only one universal State in Redux
     - 2. State is read only
     - 3. Changes made using only pure functions
         - A pure function is one that always receives an input and always returns a predictable output
+
+- ### Reducers
+    - ![reducer-diagram]
 
 - ### Redux Flow
     - **Action --> Root Reducer --> Store --> DOM changes**
