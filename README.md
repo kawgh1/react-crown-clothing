@@ -48,6 +48,9 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 - React is best at handling the View - not so good at handling complex State
 - Redux is for managing and scaling large applications that have a lot going on in State
 - Useful for sharing data between Components
+    - **$ npm install redux redux-logger react-redux**
+    - **The Redux Component goes in the index.js file** - this give the app access to Redux
+  
 - ### 3 Principles of Redux
     - 1. Single source of truth
         - There is only one universal State in Redux
@@ -57,6 +60,31 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 
 - ### Reducers
     - ![reducer-diagram](https://github.com/kawgh1/react-crown-clothing/blob/main/reducer-diagram.png)
+    - **Code**
+    - Reducers **listen** to ever user action, but they only care about the actions that particular reducer is associated with (userReducer for example -> only cares about changes involving user status) So if a reducer picks up a relevant action, it will make the update to State, otherwise it will just return the current State unchanged (and some other reducer will go to work to update State)
+    - Every Reducer is just a function that takes a State and an action as paramters and returns either State unchanged or State updated with a new payload
+    - If the Reducer determines a particular action does change State for its items, then the Components tied to that Reducer will not re-render - which is very efficient
+
+        File: redux.js
+
+            const userReducer = (currentState, action) => {
+
+                switch(action.type) {
+
+                    case 'SET_CURRENT_USER':
+
+                        return {
+                            ... currentState,
+                            currentUser: action.payload
+                        };
+
+                    // if no change, return currentState, no re-rendera
+                    default:
+
+                        return currentState;
+
+                }
+            }; // => { currentUser: {...}}
 
 - ### Redux Flow
     - **Action --> Root Reducer --> Store --> DOM changes**
@@ -66,9 +94,14 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
         - user takes user action, inputs in a pure function at the reducer and updates State
     - Store - represents what our app should look like, State updates
     - DOM Changes - React detects changes to State and renders appropriately
-- ## FLUX Pattern
-    - Redux uses an architectural pattern called Flux
-    - **Action --> Dispatcher --> Store --> View**
+    - #### FLUX Pattern
+        - Redux uses an architectural pattern called Flux
+        - **Action --> Dispatcher --> Store --> View**
+
+- ### Middleware
+    - Middleware intercepts actions and works on them before they go to the Reducer
+    - **Action --> ***Middleware*** --> Root Reducer --> Store --> DOM changes**
+
 
 
 
