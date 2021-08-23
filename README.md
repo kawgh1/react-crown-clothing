@@ -56,7 +56,7 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
         - A pure function is one that always receives an input and always returns a predictable output
 
 - ### Reducers
-    - ![reducer-diagram]
+    - ![reducer-diagram](https://github.com/kawgh1/react-crown-clothing/blob/main/reducer-diagram.png)
 
 - ### Redux Flow
     - **Action --> Root Reducer --> Store --> DOM changes**
