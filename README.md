@@ -49,7 +49,25 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 - Redux is for managing and scaling large applications that have a lot going on in State
 - Useful for sharing data between Components
     - **$ npm install redux redux-logger react-redux**
-    - **The Redux Component goes in the index.js file** - this give the app access to Redux
+    - **The React-Redux Component goes in the index.js file** - this give the app access to Redux
+        - called the **{ Provider }**
+            - **import { Provider } from 'react-redux'**
+            - Provider is the Parent of everything in the application - total access
+
+                File index.js
+
+                    ...
+                    import { Provider } from 'react-redux'
+                    import App from './App'
+                    ...
+                    ReactDOM.render(
+                        <Provider>
+                            <BrowserRouter>
+                                <App />
+                            </BrowserRouter>
+                        </Provider>,
+                        document.getElementById('root)
+                    );
   
 - ### 3 Principles of Redux
     - 1. Single source of truth
@@ -59,8 +77,8 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
         - A pure function is one that always receives an input and always returns a predictable output
 
 - ### Reducers
-    - ![reducer-diagram](https://github.com/kawgh1/react-crown-clothing/blob/main/reducer-diagram.png)
-    - **Code**
+![reducer-diagram](https://github.com/kawgh1/react-crown-clothing/blob/main/reducer-diagram.png)
+- **Code**
     - Reducers **listen** to ever user action, but they only care about the actions that particular reducer is associated with (userReducer for example -> only cares about changes involving user status) So if a reducer picks up a relevant action, it will make the update to State, otherwise it will just return the current State unchanged (and some other reducer will go to work to update State)
     - Every Reducer is just a function that takes a State and an action as paramters and returns either State unchanged or State updated with a new payload
     - If the Reducer determines a particular action does change State for its items, then the Components tied to that Reducer will not re-render - which is very efficient
