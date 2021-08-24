@@ -2,6 +2,7 @@
 This `main` branch contains Redux and the more advanced features. The `react_only` branch contains only react and basic firebase functionality.
 
 - Based on course by Zero-to-Mastery
+    - https://github.com/ZhangMYihua/lesson-34
 
 ## Tools Used
 - ### Sass CSS

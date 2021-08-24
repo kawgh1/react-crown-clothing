@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import HomePage from './pages/homepage/homepage.component';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 
 
@@ -105,7 +105,12 @@ class App extends React.Component {
         <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/shop' component={ShopPage} />
-            <Route exact path='/signin' component={SigninSignupPage} />
+            {/* <Route exact path='/signin' component={SigninSignupPage} /> */}
+            <Route exact path='/signin' 
+                    render={() => this.props.currentUser ? (<Redirect to='/' />)
+                                                          : (<SigninSignupPage />)} 
+                                      
+            />
             
         </Switch>
         
@@ -116,6 +121,14 @@ class App extends React.Component {
   
 }
 
+// used when user is signed in, shouldnt be able to access sign in page
+// we are pulling 'user' from redux state
+const mapStateToProps = ({user}) => ({
+
+  currentUser: user.currentUser
+
+});
+
 const mapDispatchToProps = dispatch => ({
   // dispatch is a method that tells redux, whatever object you're passing me,
   // is going to be an action object that I'm going to pass to every reducer
@@ -124,4 +137,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 // export default App;
-export default connect(null, mapDispatchToProps)(App);
+// export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
