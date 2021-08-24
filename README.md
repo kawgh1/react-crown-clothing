@@ -21,6 +21,7 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
     - **$ npm install firebase@6.0.2**
 
 - ### Redux
+    - - **$ npm install redux redux-logger react-redux**
     
 
 ## Things I Added
@@ -53,8 +54,9 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
         - called the **{ Provider }**
             - **import { Provider } from 'react-redux'**
             - Provider is the Parent of everything in the application - total access
+    - All the Redux files go in a src folder 'src/redux'
 
-                File index.js
+                File: index.js
 
                     ...
                     import { Provider } from 'react-redux'
@@ -116,6 +118,7 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
         - Redux uses an architectural pattern called Flux
         - **Action --> Dispatcher --> Store --> View**
 
+![redux-flow-diagram]()
 - ### Middleware
     - Middleware intercepts actions and works on them before they go to the Reducer
     - **Action --> ***Middleware*** --> Root Reducer --> Store --> DOM changes**
