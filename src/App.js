@@ -17,15 +17,21 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 // when a user signs in, we want to store that in **STATE** so that our app can know that across all pages and components
 // because we want to access our current 'user-object' throughout our app
 
+// REDUX
+import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions'
+
 class App extends React.Component {
 
-  constructor() {
-    super();
+  // Since this constructor was only used for setting currentUser
+  // we don't need it anymore and it has been replaced by `mapDispatchToProps` at bottom
+  // constructor() {
+  //   super();
 
-    this.state = {
-      currentUser: null
-    };
-  }
+  //   this.state = {
+  //     currentUser: null
+  //   };
+  // }
 
   unsubscribeFromAuth = null
 
@@ -42,13 +48,22 @@ class App extends React.Component {
           userRef.onSnapshot(snapShot => {
 
             // console.log(snapShot.data());
-              // set this App's current user using userRef's properties from firestore
-              this.setState({
+            // set this App's current user using userRef's properties from firestore
+
+              // REACT
+              // this.setState({
                 
-                  currentUser: {
-                      id: snapShot.id,
-                      ...snapShot.data()
-                  }
+              //     currentUser: {
+              //         id: snapShot.id,
+              //         ...snapShot.data()
+              //     }
+
+              // REDUX
+              this.props.setCurrentUser({
+                
+                    id: snapShot.id,
+                    ...snapShot.data()
+                
                   // since setState() is an asynchronous call, 
                   // have to pass console.log as a second function as a parameter in setState
                   // running console.log immediately after an async call 
@@ -64,7 +79,10 @@ class App extends React.Component {
       }
 
       // if user signs out, it will reset userAuth to null, thus our App's current user will be bull
-      this.setState({ currentUser: userAuth });
+      // REACT
+      // this.setState({ currentUser: userAuth });
+      // REDUX
+      this.props.setCurrentUser(userAuth);
       // console.log(user);
     });
   }
@@ -81,7 +99,9 @@ class App extends React.Component {
   
         
   
-        <Header currentUser={this.state.currentUser} />
+        {/* <Header currentUser={this.state.currentUser} /> 
+        currentUser is now set in the Header Componet from the Redux Root Reducer */}
+        <Header />
         <Switch>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/shop' component={ShopPage} />
@@ -96,4 +116,12 @@ class App extends React.Component {
   
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  // dispatch is a method that tells redux, whatever object you're passing me,
+  // is going to be an action object that I'm going to pass to every reducer
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+
+});
+
+// export default App;
+export default connect(null, mapDispatchToProps)(App);

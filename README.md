@@ -118,7 +118,7 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
         - Redux uses an architectural pattern called Flux
         - **Action --> Dispatcher --> Store --> View**
 
-![redux-flow-diagram]()
+![redux-flow-diagram](https://github.com/kawgh1/react-crown-clothing/blob/main/redux-flow.png)
 - ### Middleware
     - Middleware intercepts actions and works on them before they go to the Reducer
     - **Action --> ***Middleware*** --> Root Reducer --> Store --> DOM changes**

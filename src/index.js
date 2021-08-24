@@ -9,8 +9,14 @@ import { Provider } from 'react-redux'
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 // import reportWebVitals from './reportWebVitals';
 
+import store from './redux/store'
+  // once Provider is passed the Redux Store object, 
+  // it will give the Store object total context for the entire application
+  // thus Universal State
+
 ReactDOM.render(
-  <Provider>
+
+  <Provider store={store}>
     
       <BrowserRouter>
           <App />

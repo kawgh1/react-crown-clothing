@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import './header.styles.scss'
 import { ReactComponent as Logo } from '../../assets/logo/crown.svg'
 
+// REDUX
+import { connect } from 'react-redux'
+
 // FIREBASE
 import { auth } from '../../firebase/firebase.utils'
 
@@ -43,6 +46,14 @@ const Header = ( props) => (
         
     </div>
     
-)
+);
 
-export default Header;
+// 'state' here is the top level Root Reducer
+// so Root Reducer is pulling 'currentUser' from the userReducer.currentUser value
+const mapStateToProps = (state) => ({
+
+    currentUser: state.user.currentUser
+});
+
+// export default Header;
+export default connect(mapStateToProps)(Header);
