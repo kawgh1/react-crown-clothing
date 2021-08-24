@@ -15,16 +15,22 @@ const CollectionPreview = (props) => (
         }}
     />
         <div className='preview'>
-        {
+        {/* REACT */}
+        {/* {
             props.items
                     .filter((item, idx) => idx < 3 ) // only show first 3 items in collection
                     .map((item) => (
 
                         <CollectionItem key={item.id} price={item.price} name={item.name} imageUrl={item.imageUrl}/>
-               
-
             ))
-        }
+        } */}
+
+        {/* REDUX */}
+        {props.items
+        .filter((item, idx) => idx < 4)
+        .map(item => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
 
 
 

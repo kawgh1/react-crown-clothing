@@ -2,34 +2,72 @@ import React from 'react'
 
 import './collection-item.styles.scss'
 
-const CollectionItem = (props) =>  (
+import CustomButton from '../custom-button/custom-button.component'
 
-    <div className='collection-item'>
-        <div className='image' 
-                style={{backgroundImage: `url(${props.imageUrl})`}} />
+// REDUX
+import { connect } from 'react-redux'
+import { addItem } from '../../redux/cart/cart.actions'
 
-        <hr
-            style={{
-                color: "white",
-                width: "95%"
-            }}
-        />
+// REACT
 
-        <div className='collection-footer'>
-            <span className='name'>{props.name}
+// const CollectionItem = (props) =>  (
 
-                    <hr
-                    style={{
-                        color: "white",
-                        marginLeft: "0px",
-                        width: "95%"
-                    }}
-                />
+//     <div className='collection-item'>
+//         <div className='image' 
+//                 style={{backgroundImage: `url(${props.imageUrl})`}} />
+
+//         <hr
+//             style={{
+//                 color: "white",
+//                 width: "95%"
+//             }}
+//         />
+
+//         <div className='collection-footer'>
+//             <span className='name'>{props.name}
+
+//                     <hr
+//                     style={{
+//                         color: "white",
+//                         marginLeft: "0px",
+//                         width: "95%"
+//                     }}
+//                 />
             
-            </span>
-            <span className='price'>${props.price}</span>
-        </div>
-    </div>
-);
+//             </span>
+//             <span className='price'>${props.price}</span>
+//         </div>
+//         <CustomButton onClick={() => addItem(props.item)} inverted>Add to cart</CustomButton>
+//     </div>
+// );
 
-export default CollectionItem;
+// REDUX
+
+const CollectionItem = ({ item, addItem }) => {
+    const { name, price, imageUrl } = item;
+  
+    return (
+      <div className='collection-item'>
+        <div
+          className='image'
+          style={{
+            backgroundImage: `url(${imageUrl})`
+          }}
+        />
+        <div className='collection-footer'>
+          <span className='name'>{name}</span>
+          <span className='price'>{price}</span>
+        </div>
+        <CustomButton onClick={() => addItem(item)} inverted>
+          Add to cart
+        </CustomButton>
+      </div>
+    );
+  };
+
+const mapDispatchToProps = dispatch => ({
+    addItem: item => dispatch(addItem(item))
+});
+
+// export default CollectionItem;
+export default connect(null, mapDispatchToProps)(CollectionItem);
