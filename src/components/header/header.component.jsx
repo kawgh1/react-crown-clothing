@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './header.styles.scss'
 import { ReactComponent as Logo } from '../../assets/logo/crown.svg'
+import CartIcon from '../cart-icon/cart-icon.component'
 
 // REDUX
 import { connect } from 'react-redux'
@@ -14,7 +15,7 @@ const Header = ( props) => (
     <div className='container'>
         <div className='header'>
             <Link className='logo-container' to="/">
-                <Logo className='logo' />
+                <Logo className='logo' style={{webkitTapHighlightColor: "transparent"}}/>
             </Link>
 
             <div className='options'>
@@ -34,18 +35,10 @@ const Header = ( props) => (
                     CONTACT
                 </Link>
 
-                
+                <CartIcon  />
             </div>
-
-       
-
         </div>
-
-   
-
-        
-    </div>
-    
+    </div>    
 );
 
 // 'state' here is the top level Root Reducer
