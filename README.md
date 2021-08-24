@@ -1,4 +1,4 @@
-# React-based E-Commerce site with additional features
+# React-based E-Commerce site with Redux
 This `main` branch contains Redux and the more advanced features. The `react_only` branch contains only react and basic firebase functionality.
 
 - Based on course by Zero-to-Mastery
@@ -46,7 +46,7 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 
 ![Redux Diagram](https://github.com/kawgh1/react-crown-clothing/blob/main/redux-diagram.png)
 
-## REDUX
+# REDUX
 - React is best at handling the View - not so good at handling complex State
 - Redux is for managing and scaling large applications that have a lot going on in State
 - Useful for sharing data between Components
@@ -124,7 +124,7 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
     - Middleware intercepts actions and works on them before they go to the Reducer
     - **Action --> ***Middleware*** --> Root Reducer --> Store --> DOM changes**
 
-
+# Firebase
 
 
 ### Javascript Objects We Get Back From Firestore Database
