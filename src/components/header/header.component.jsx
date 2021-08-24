@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import './header.styles.scss'
 import { ReactComponent as Logo } from '../../assets/logo/crown.svg'
 import CartIcon from '../cart-icon/cart-icon.component'
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 // REDUX
 import { connect } from 'react-redux'
+
 
 // FIREBASE
 import { auth } from '../../firebase/firebase.utils'
@@ -15,7 +17,7 @@ const Header = ( props) => (
     <div className='container'>
         <div className='header'>
             <Link className='logo-container' to="/">
-                <Logo className='logo' style={{webkitTapHighlightColor: "transparent"}}/>
+                <Logo className='logo' style={{WebkitTapHighlightColor: "transparent"}}/>
             </Link>
 
             <div className='options'>
@@ -37,6 +39,10 @@ const Header = ( props) => (
 
                 <CartIcon  />
             </div>
+                {
+                    props.cart ? null : <CartDropdown />
+                }
+            
         </div>
     </div>    
 );
@@ -45,7 +51,8 @@ const Header = ( props) => (
 // so Root Reducer is pulling 'currentUser' from the userReducer.currentUser value
 const mapStateToProps = (state) => ({
 
-    currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    cart: state.cart.hidden
 });
 
 // export default Header;
