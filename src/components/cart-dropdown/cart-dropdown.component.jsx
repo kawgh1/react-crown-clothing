@@ -6,24 +6,52 @@ import CartItem from '../cart-item/cart-item.component'
 
 import CustomButton from '../custom-button/custom-button.component'
 
+// React Router
+import { withRouter } from 'react-router-dom'
+
 // REDUX
 import { connect } from 'react-redux'
 
 // Selectors
-import { selectCartItems } from '../../redux/cart/cart.selectors'
+import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors'
 import { createStructuredSelector } from 'reselect';
 
-const CartDropdown = ({ cartItems }) => (
+const CartDropdown = ({ cartItems, history, total }) => (
 
     <div className='cart-dropdown'>
         <div className='cart-items' />
         {
-            cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />)
+            cartItems.length ? (
+                cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />
+                )
+            ) : (
+                <span className='empty-message'>Your cart is empty!</span>
+            )
+
         }
 
-        <hr style={{ color: "green", width: "80%", marginBottom: "12px" }} />
+        {
+            cartItems.length ? (
+                <div >
 
-        <CustomButton >GO TO CHECKOUT</CustomButton>
+                    <hr style={{ color: "green", width: "95%", marginBottom: "5px" }} />
+
+                    <div className='subtotal'>
+                            <span>Subtotal </span>
+                            <span style={{ fontWeight: "bold", color: "green"}}> ${total}</span>
+                    </div>
+                    
+
+                    <hr style={{ color: "green", width: "95%", marginBottom: "12px" }} />
+
+                </div>
+            ) : <hr style={{ color: "green", width: "95%", marginBottom: "12px" }} />
+
+        }
+
+        
+
+        <CustomButton onClick={ () => history.push('/checkout') }>GO TO CHECKOUT</CustomButton>
     </div>
 );
 
@@ -41,7 +69,9 @@ const CartDropdown = ({ cartItems }) => (
 
 // STRUCTURED SELECTOR
 const mapStateToProps = createStructuredSelector ({
-    cartItems: selectCartItems
+    cartItems: selectCartItems,
+    total: selectCartTotal
 });
 
-export default connect(mapStateToProps)(CartDropdown);
+// connect() returns a component, withRouter() takes a component as a parameter
+export default withRouter(connect(mapStateToProps)(CartDropdown));
