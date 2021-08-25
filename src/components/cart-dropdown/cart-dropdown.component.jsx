@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
 
 // Selectors
 import { selectCartItems } from '../../redux/cart/cart.selectors'
+import { createStructuredSelector } from 'reselect';
 
 const CartDropdown = ({ cartItems }) => (
 
@@ -31,12 +32,16 @@ const CartDropdown = ({ cartItems }) => (
 //     cartItems
 // });
 
-// Selectors
+// Unstructured Selectors
 // this makes sure that are cart-dropdown component does NOT get re-rendered
 // when State changes that is unrelated to the cart items - for example, signing out
-const mapStateToProps = state => ({
-    cartItems: selectCartItems(state)
-});
+// const mapStateToProps = state => ({
+//     cartItems: selectCartItems(state)
+// });
 
+// STRUCTURED SELECTOR
+const mapStateToProps = createStructuredSelector ({
+    cartItems: selectCartItems
+});
 
 export default connect(mapStateToProps)(CartDropdown);

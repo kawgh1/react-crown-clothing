@@ -21,11 +21,11 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
     - https://firebase.google.com/
     - **$ npm install firebase@6.0.2**
 
-- ### Redux
+- ## Redux
     - **$ npm install redux redux-logger react-redux**
 
 - ### Selectors
-    - #### Reselect
+    - ## Reselect Library
     - **$ npm install reselect**
     - https://www.npmjs.com/package/reselect
         - Simple “selector” library for Redux (and others) inspired by getters in NuclearJS, subscriptions in re-frame and this proposal from speedskater.

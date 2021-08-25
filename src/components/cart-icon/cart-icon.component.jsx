@@ -8,6 +8,7 @@ import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
 
 // SELECTOR
 import { selectCartItemsCount } from '../../redux/cart/cart.selectors'
+import { createStructuredSelector } from 'reselect'
 
 import './cart-icon.styles.scss'
 
@@ -29,12 +30,17 @@ const mapDispatchToProps = dispatch => ({
 //     itemCount: cartItems.reduce((accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity, 0)
 // });
 
-// Selectors
+// Unstructured Selectors
 // this makes sure that our cart-icon's number of cart-items does NOT get re-rendered
 // when State changes that is unrelated to the cart items - for example, signing out
-const mapStateToProps = state => ({
-    itemCount: selectCartItemsCount(state)
-});
+// const mapStateToProps = state => ({
+//     itemCount: selectCartItemsCount(state)
+// });
 
+
+// STRUCTURED SELECTOR
+const mapStateToProps = createStructuredSelector ({
+    itemCount: selectCartItemsCount
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

@@ -21,6 +21,10 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils'
 import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/user.actions'
 
+// SELECTORS
+import { selectCurrentUser } from './redux/user/user.selectors'
+import { createStructuredSelector } from 'reselect'
+
 class App extends React.Component {
 
   // Since this constructor was only used for setting currentUser
@@ -121,19 +125,26 @@ class App extends React.Component {
   
 }
 
+// REACT
 // used when user is signed in, shouldnt be able to access sign in page
 // we are pulling 'user' from redux state
-const mapStateToProps = ({user}) => ({
+// const mapStateToProps = ({user}) => ({
 
-  currentUser: user.currentUser
+//   currentUser: user.currentUser
 
-});
+// });
 
+// REACT
 const mapDispatchToProps = dispatch => ({
   // dispatch is a method that tells redux, whatever object you're passing me,
   // is going to be an action object that I'm going to pass to every reducer
   setCurrentUser: user => dispatch(setCurrentUser(user))
 
+});
+
+// STRUCTURED SELECTOR
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 // export default App;
