@@ -1,6 +1,6 @@
 .cart-dropdown {
 	position: absolute;
-	width: 240px;
+	width: 260px;
 	height: 340px;
 	display: flex;
 	flex-direction: column;
@@ -13,12 +13,13 @@
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px,
 		rgba(0, 0, 0, 0.2) 0px 3px 8px inset;
 	border-radius: 3px;
+	overflow-y: scroll;
+	overflow-x: hidden;
 
 	.cart-items {
 		height: 240px;
 		display: flex;
 		flex-direction: column;
-		overflow: auto;
 	}
 
 	button {
@@ -32,5 +33,11 @@
 		color: white;
 		border: 1px solid white;
 		opacity: 0.7;
+	}
+
+	.item-total {
+		margin-left: 60px;
+		font-weight: bold;
+		color: rgb(13, 59, 13);
 	}
 }

@@ -22,7 +22,17 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
     - **$ npm install firebase@6.0.2**
 
 - ### Redux
-    - - **$ npm install redux redux-logger react-redux**
+    - **$ npm install redux redux-logger react-redux**
+
+- ### Reselect
+    - **$ npm install reselect**
+    - https://www.npmjs.com/package/reselect
+        - Simple “selector” library for Redux (and others) inspired by getters in NuclearJS, subscriptions in re-frame and this proposal from speedskater.
+
+            - Selectors can compute derived data, allowing Redux to store the minimal possible state.
+            - Selectors are efficient. A selector is not recomputed unless one of its arguments changes.
+            - Selectors are composable. They can be used as input to other selectors.
+
     
 
 ## Things I Added
