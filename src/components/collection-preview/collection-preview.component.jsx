@@ -8,12 +8,7 @@ const CollectionPreview = (props) => (
     <div className='collection-preview'>
         <h1 className='title'>{props.title.toUpperCase()}</h1>
 
-        <hr
-        style={{
-            color: "red",
-            width: "90%"
-        }}
-    />
+        <hr style={{ color: "red", width: "90%" }} />
         <div className='preview'>
         {/* REACT */}
         {/* {
@@ -27,7 +22,7 @@ const CollectionPreview = (props) => (
 
         {/* REDUX */}
         {props.items
-        .filter((item, idx) => idx < 4)
+        .filter((item, idx) => idx < 3)
         .map(item => (
           <CollectionItem key={item.id} item={item} />
         ))}

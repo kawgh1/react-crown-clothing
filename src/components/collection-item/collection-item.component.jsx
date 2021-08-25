@@ -16,23 +16,12 @@ import { addItem } from '../../redux/cart/cart.actions'
 //         <div className='image' 
 //                 style={{backgroundImage: `url(${props.imageUrl})`}} />
 
-//         <hr
-//             style={{
-//                 color: "white",
-//                 width: "95%"
-//             }}
-//         />
+//         <hr style={{ color: "white", width: "95%" }} />
 
 //         <div className='collection-footer'>
 //             <span className='name'>{props.name}
 
-//                     <hr
-//                     style={{
-//                         color: "white",
-//                         marginLeft: "0px",
-//                         width: "95%"
-//                     }}
-//                 />
+//              <hr style={{ color: "white", marginLeft: "0px", width: "95%" }}/>
             
 //             </span>
 //             <span className='price'>${props.price}</span>
@@ -50,14 +39,20 @@ const CollectionItem = ({ item, addItem }) => {
       <div className='collection-item'>
         <div
           className='image'
-          style={{
-            backgroundImage: `url(${imageUrl})`
-          }}
-        />
+          style={{ backgroundImage: `url(${imageUrl})` }} />
+
+        <hr style={{ color: "white", width: "95%", marginBottom: "2px" }} />
+
         <div className='collection-footer'>
           <span className='name'>{name}</span>
-          <span className='price'>{price}</span>
+
+          
+
+          <span className='price'>${price}</span>
         </div>
+
+        <hr style={{ color: "white", marginLeft: "5px", width: "75%", marginTop: "10px" }}/>
+        
         <CustomButton onClick={() => addItem(item)} inverted>
           Add to cart
         </CustomButton>

@@ -20,6 +20,7 @@
 		&:active,
 		:focus {
 			cursor: pointer;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 			-webkit-tap-highlight-color: transparent; // removes blue highlight box on mobile
 
 			transform: scale(1.15);
@@ -29,17 +30,25 @@
 	}
 
 	.options {
-		width: 50%;
+		width: 40%;
 		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
+		margin-right: 10px;
 
 		.option {
-			padding: 10px 15px;
+			// padding: 10px 5px;
 			margin-top: 30px;
 			cursor: pointer;
-			min-width: 50px;
+			min-width: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
+	}
+
+	.sign {
+		margin-right: 10px;
 	}
 }
