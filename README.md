@@ -24,7 +24,8 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
 - ### Redux
     - **$ npm install redux redux-logger react-redux**
 
-- ### Reselect
+- ### Selectors
+    - #### Reselect
     - **$ npm install reselect**
     - https://www.npmjs.com/package/reselect
         - Simple “selector” library for Redux (and others) inspired by getters in NuclearJS, subscriptions in re-frame and this proposal from speedskater.
@@ -32,6 +33,11 @@ This `main` branch contains Redux and the more advanced features. The `react_onl
             - Selectors can compute derived data, allowing Redux to store the minimal possible state.
             - Selectors are efficient. A selector is not recomputed unless one of its arguments changes.
             - Selectors are composable. They can be used as input to other selectors.
+            - **Selectors are used when you only want to return part of the State or a 'slice'**
+                - **this prevents a total re-render of the component(s)**
+                - `Used in this app to display the current number of items in shopping cart icon`
+
+    File: cart.selectors.js, cart-icon.component.jsx
 
     
 

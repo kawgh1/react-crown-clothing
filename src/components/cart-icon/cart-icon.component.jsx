@@ -6,6 +6,9 @@ import { toggleCartHidden } from '../../redux/cart/cart.actions'
 
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg'
 
+// SELECTOR
+import { selectCartItemsCount } from '../../redux/cart/cart.selectors'
+
 import './cart-icon.styles.scss'
 
 const CartIcon = (props) => (
@@ -21,7 +24,17 @@ const mapDispatchToProps = dispatch => ({
     toggleCartHidden: () => dispatch(toggleCartHidden())
 });
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-    itemCount: cartItems.reduce((accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity, 0)
+// React Redux
+// const mapStateToProps = ({ cart: { cartItems } }) => ({
+//     itemCount: cartItems.reduce((accumulatedQuantity, cartItem) => accumulatedQuantity + cartItem.quantity, 0)
+// });
+
+// Selectors
+// this makes sure that our cart-icon's number of cart-items does NOT get re-rendered
+// when State changes that is unrelated to the cart items - for example, signing out
+const mapStateToProps = state => ({
+    itemCount: selectCartItemsCount(state)
 });
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

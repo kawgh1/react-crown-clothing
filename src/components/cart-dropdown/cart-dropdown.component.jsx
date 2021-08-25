@@ -9,6 +9,9 @@ import CustomButton from '../custom-button/custom-button.component'
 // REDUX
 import { connect } from 'react-redux'
 
+// Selectors
+import { selectCartItems } from '../../redux/cart/cart.selectors'
+
 const CartDropdown = ({ cartItems }) => (
 
     <div className='cart-dropdown'>
@@ -23,8 +26,17 @@ const CartDropdown = ({ cartItems }) => (
     </div>
 );
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-    cartItems
+// React Redux
+// const mapStateToProps = ({ cart: { cartItems } }) => ({
+//     cartItems
+// });
+
+// Selectors
+// this makes sure that are cart-dropdown component does NOT get re-rendered
+// when State changes that is unrelated to the cart items - for example, signing out
+const mapStateToProps = state => ({
+    cartItems: selectCartItems(state)
 });
+
 
 export default connect(mapStateToProps)(CartDropdown);
