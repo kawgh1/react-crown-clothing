@@ -1,43 +1,78 @@
 import React from 'react'
 
 // shop data
-import SHOP_DATA from './shop.data.js'
+// import SHOP_DATA from './shop.data.js'
 
 import './shop.styles.scss'
 
-import CollectionPreview from '../../components/collection-preview/collection-preview.component'
+// redux
+// import { connect } from 'react-redux'
+// import { createStructuredSelector } from 'reselect'
 
-class ShopPage extends React.Component {
+// // reducers
+// import { selectCollections } from '../../redux/shop/shop.selectors'
 
-    constructor(props) {
+// import CollectionPreview from '../../components/collection-preview/collection-preview.component'
 
-        super(props);
+import { Route } from 'react-router-dom';
 
-        this.state = {
+import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
+import CollectionPage from '../collection/collection.component';
 
-            collections: SHOP_DATA
-        };
-    }
+/////
+//
+// ShopPage is becoming a simple non-connected component now.
+//
+// We will now have the child component of the ShopPage be connected.
+// 
+//////
 
 
-    render() {
-        const {collections} = this.state;
-        return (
-            <div className='shop-page'>
+const ShopPage = ({ match }) => (
+    <div className='shop-page'>
+      <Route exact path={`${match.path}`} component={CollectionsOverview} />
+      <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
+    </div>
+  );
+
+  export default ShopPage;
+// class ShopPage extends React.Component {
+
+//     constructor(props) {
+
+//         super(props);
+
+//         this.state = {
+
+//             collections: SHOP_DATA
+//         };
+//     }
+
+// since Component State is now stored in a reducer, we can use a functional component
+
+
+// const shopPage = ({ collections }) => (
+   
+//             <div className='shop-page'>
             
-                {collections.map((collection) => (
+//                 {collections.map((collection) => (
 
-                    <CollectionPreview 
-                            key={collection.id} 
-                            title={collection.title}
-                            items={collection.items} 
-                            />
-                ))}
+//                     <CollectionPreview 
+//                             key={collection.id} 
+//                             title={collection.title}
+//                             items={collection.items} 
+//                             />
+//                 ))}
 
                
-            </div>
-        );
-    }
-}
+//             </div>
+//         );
 
-export default ShopPage;
+// // export default ShopPage;
+
+// const mapStateToProps = createStructuredSelector({
+//     collections: selectCollections
+// });
+
+// export default connect(mapStateToProps)(shopPage);
+
