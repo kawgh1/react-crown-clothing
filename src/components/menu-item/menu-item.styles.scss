@@ -21,10 +21,6 @@
 			transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
 			filter: brightness(125%);
 		}
-
-		& .content {
-			// opacity: 0.8;
-		}
 	}
 
 	&.large {
