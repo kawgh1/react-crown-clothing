@@ -6,6 +6,7 @@ import CollectionItem from '../collection-item/collection-item.component';
 const CollectionPreview = (props) => (
 
     <div className='collection-preview'>
+    {/* I want this to link to the collection overview */}
         <h1 className='title'>{props.title.toUpperCase()}</h1>
 
         <hr style={{ color: "red", width: "90%" }} />
