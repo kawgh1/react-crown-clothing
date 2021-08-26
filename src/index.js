@@ -9,17 +9,24 @@ import { Provider } from 'react-redux'
 // import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 // import reportWebVitals from './reportWebVitals';
 
-import store from './redux/store'
+// import store from './redux/store'
   // once Provider is passed the Redux Store object, 
   // it will give the Store object total context for the entire application
   // thus Universal State
+
+  //redux-persist
+  import { PersistGate } from 'redux-persist/integration/react'
+  import { store, persistor } from './redux/store'
 
 ReactDOM.render(
 
   <Provider store={store}>
     
       <BrowserRouter>
-          <App />
+          <PersistGate persistor={ persistor }>
+              <App />
+          </PersistGate>
+          
       </BrowserRouter>
   </Provider>,
   document.getElementById('root')

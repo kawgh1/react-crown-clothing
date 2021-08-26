@@ -25,6 +25,10 @@
 
 - ## Redux
     - **$ npm install redux redux-logger react-redux**
+        - Redux Persist
+            - **$ npm install redux-persist**
+            - https://www.npmjs.com/package/redux-persist
+            - Basic usage involves adding `persistReducer` and `persistStore` to your setup.
 
 - ### Selectors
     - ## Reselect Library

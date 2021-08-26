@@ -4,12 +4,20 @@ import logger from 'redux-logger';
 
 import rootReducer from "./root-reducer";
 
+// REDUX PERSIST
+// Allows redux to persist the Store depending on certain config options set
+import { persistStore } from 'redux-persist';
+
 // The Middleware that the Store is expecting from Redux is an array []
 
 const middlewares = [logger];
 
-const store = createStore(rootReducer, applyMiddleware(...middlewares));
+export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
-export default store;
+//redux-persist
+export const persistor = persistStore(store);
+
+// eslint-disable-next-line
+export default { store, persistor };
 
 // the store object will be imported into index.js and passed into the PROVIDER
